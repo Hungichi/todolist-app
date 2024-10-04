@@ -1,0 +1,59 @@
+/* src/index.css */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f5f7;
+}
+
+.boards-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.boards-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.board-item {
+  background-color: #0079bf;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 200px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.board-item:hover {
+  background-color: #026aa7;
+}
+
+.board-link {
+  text-decoration: none;
+}
+
+.board {
+  padding: 20px;
+}
+
+.lists {
+  display: flex;
+  gap: 20px;
+}
+
+.list {
+  background-color: #ebecf0;
+  padding: 10px;
+  border-radius: 5px;
+  width: 250px;
+}
+
+.card {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
