@@ -1,3 +1,5 @@
+// src/components/AddCard.jsx
+
 import React, { useState } from 'react';
 
 const AddCard = ({ onAddCard }) => {

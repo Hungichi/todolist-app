@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import List from './List';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import AddList from './AddList';  // Component mới để thêm danh sách mới
 
 const initialBoard = {
   id: 'board-1',
@@ -53,7 +54,6 @@ const Board = () => {
     });
   };
 
-  // Hàm di chuyển thẻ
   const moveCard = (fromListId, fromIndex, toListId, toIndex) => {
     setBoard((prevBoard) => {
       const fromList = prevBoard.lists.find(list => list.id === fromListId);
@@ -61,19 +61,38 @@ const Board = () => {
       const updatedFromCards = [...fromList.cards];
       const updatedToCards = [...toList.cards];
 
-      const [movedCard] = updatedFromCards.splice(fromIndex, 1); // Lấy thẻ từ danh sách nguồn
-      updatedToCards.splice(toIndex, 0, movedCard); // Thêm thẻ vào danh sách đích
+      const [movedCard] = updatedFromCards.splice(fromIndex, 1);
+      updatedToCards.splice(toIndex, 0, movedCard);
 
       const updatedLists = prevBoard.lists.map((list) => {
         if (list.id === fromListId) {
-          return { ...list, cards: updatedFromCards }; // Cập nhật danh sách nguồn
+          return { ...list, cards: updatedFromCards };
         } else if (list.id === toListId) {
-          return { ...list, cards: updatedToCards }; // Cập nhật danh sách đích
+          return { ...list, cards: updatedToCards };
         }
         return list;
       });
 
-      return { ...prevBoard, lists: updatedLists }; // Trả về trạng thái mới của bảng
+      return { ...prevBoard, lists: updatedLists };
+    });
+  };
+
+  const addList = (newList) => {
+    setBoard((prevBoard) => ({
+      ...prevBoard,
+      lists: [...prevBoard.lists, newList],
+    }));
+  };
+
+  const editListTitle = (listId, newTitle) => {
+    setBoard((prevBoard) => {
+      const updatedLists = prevBoard.lists.map((list) => {
+        if (list.id === listId) {
+          return { ...list, title: newTitle };
+        }
+        return list;
+      });
+      return { ...prevBoard, lists: updatedLists };
     });
   };
 
@@ -87,9 +106,11 @@ const Board = () => {
             onAddCard={addCardToList}
             onEditCard={editCard}
             onDeleteCard={deleteCard}
-            moveCard={moveCard} // Truyền hàm di chuyển thẻ xuống component List
+            moveCard={moveCard}
+            onEditListTitle={editListTitle}  // Truyền hàm sửa tiêu đề danh sách
           />
         ))}
+        <AddList onAddList={addList} />  {/* Thêm component AddList */}
       </div>
     </DndProvider>
   );
