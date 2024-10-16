@@ -34,7 +34,6 @@ const Navbar = () => {
       </h1>
       <div className="nav-links">
         <Link to="/" style={navLinkStyle}>Home</Link>
-        <Link to="/boards" style={navLinkStyle}>Boards</Link>
       </div>
     </nav>
   );

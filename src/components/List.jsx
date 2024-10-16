@@ -3,13 +3,19 @@ import Card from './Card';
 import AddCard from './AddCard';
 import { useDrop } from 'react-dnd';
 
-const List = ({ list, onAddCard, onEditCard, onDeleteCard, moveCard, onEditListTitle }) => {
+const List = ({ list, onAddCard, onEditCard, onDeleteCard, moveCard, onEditListTitle, onDeleteList }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(list.title);
 
   const handleEditTitle = () => {
     setIsEditing(false);
     onEditListTitle(list.id, newTitle);
+  };
+  const toggleMenu = () => {
+    setShowMenu((prev) => !prev);
+  };
+  const handleDeleteList = () => {
+    onDeleteList(list.id); 
   };
 
   const handleAddCard = (newCard) => {

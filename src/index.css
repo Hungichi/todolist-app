@@ -13,43 +13,148 @@ body {
 
 .boards-page {
   padding: 20px;
-  text-align: center;
+}
+
+.create-board-btn {
+  background-color: #0079bf;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 .boards-list {
   display: flex;
-  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
 }
 
-.board-item {
-  background-color: #0079bf;
+.board-link {
+  width: 200px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  position: relative;
   color: white;
+}
+
+.board-item {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: white;
   padding: 20px;
   border-radius: 8px;
-  width: 200px;
+  width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.background-selection {
+  margin-top: 10px;
+}
+
+.background-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.background-option {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  border: 2px solid transparent;
 }
 
-.board-item:hover {
-  background-color: #026aa7;
-}
-
-.board-link {
-  text-decoration: none;
+.background-option.selected {
+  border-color: #0079bf;
 }
 
 .board {
   display: flex;
   align-items: flex-start;
-  overflow-x: auto; /* Cho phép cuộn ngang */
+  overflow-x: auto;
   padding: 1rem;
-  height: calc(100vh - 80px); /* Điều chỉnh kích thước cho hợp lý */
-  white-space: nowrap;
+  height: 100vh; /* Đảm bảo chiếm hết chiều cao màn hình */
+  width: 100vw;  /* Đảm bảo chiếm hết chiều rộng màn hình */
+  background-size: cover; /* Ảnh nền bao phủ toàn bộ phần tử */
+  background-position: center; /* Căn giữa ảnh nền */
+  background-repeat: no-repeat; /* Không lặp lại ảnh */
+  transition: background-image 0.3s ease-in-out;
+}
+.board-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
+.add-board {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  width: 300px;
+}
+
+.add-board input {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.add-board select {
+  padding: 8px;
+}
+
+.add-board button {
+  padding: 8px;
+  background-color: #0079bf;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-board button:hover {
+  background-color: #005a8c;
+}
+.background-selector {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 8px;
+}
 .list {
   width: 300px; /* Đặt kích thước cố định cho danh sách */
   margin-right: 1rem;
@@ -60,6 +165,39 @@ body {
   flex-shrink: 0; /* Ngăn danh sách bị thu nhỏ */
 }
 
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px; /* Kích thước biểu tượng */
+}
+
+.menu {
+  position: absolute; /* Đặt vị trí cho menu */
+  background-color: white; /* Màu nền menu */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Bóng đổ cho menu */
+  z-index: 1000; /* Để menu ở trên các phần tử khác */
+  margin-top: 5px; /* Khoảng cách giữa header và menu */
+}
+
+.menu button {
+  background: none; /* Nền trong suốt cho nút */
+  border: none; /* Không viền */
+  cursor: pointer; /* Con trỏ khi hover */
+  padding: 5px 10px; /* Padding cho nút */
+  width: 100%; /* Chiều rộng nút 100% */
+  text-align: left; /* Canh trái cho chữ */
+}
+
+.menu button:hover {
+  background-color: #f0f0f0; /* Màu nền khi hover */
+}
 .add-list {
   width: 300px; /* Đảm bảo nút thêm danh sách có cùng kích thước */
   flex-shrink: 0; /* Không cho phép nút thêm bị thu nhỏ */
