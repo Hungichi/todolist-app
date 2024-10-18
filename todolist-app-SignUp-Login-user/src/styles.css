@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+}
+
+.board {
+  display: flex;
+}
+
+.list {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  margin: 8px;
+  padding: 10px;
+  width: 300px;
+  min-height: 100px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 8px 0;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.add-card {
+  margin-top: 10px;
+}
