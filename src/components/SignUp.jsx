@@ -8,13 +8,20 @@ import './Auth.css';
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // State để điều khiển hiện/ẩn mật khẩu
+  const [confirmPassword, setConfirmPassword] = useState(''); // Thêm state cho mật khẩu xác nhận
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      setError('Mật khẩu và mật khẩu xác nhận không khớp.');
+      setSuccessMessage('');
+      return;
+    }
+    
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       setSuccessMessage('Đăng ký thành công!');
@@ -53,8 +60,17 @@ const SignUp = () => {
             className="eye-icon"
             onClick={() => setShowPassword(!showPassword)}
           >
-            {showPassword ? '👁️' : '🙈'} {/* Biểu tượng mắt */}
+            {showPassword ? '👁️' : '🙈'}
           </span>
+        </div>
+        <div className="password-container">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            placeholder="Xác nhận mật khẩu"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
         </div>
         <button type="submit">Đăng Ký</button>
       </form>
