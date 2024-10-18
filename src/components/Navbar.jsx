@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const navbarStyle = {
-
     top: 0,
     left: 0,
     width: '100%',
@@ -23,17 +22,13 @@ const Navbar = () => {
     marginLeft: '15px',
   };
 
-  const navLinkHoverStyle = {
-    textDecoration: 'underline',
-  };
-
   return (
     <nav style={navbarStyle}>
-      <h1>
-        To Do App
-      </h1>
+      <h1>To Do App</h1>
       <div className="nav-links">
         <Link to="/" style={navLinkStyle}>Home</Link>
+        <Link to="/signup" style={navLinkStyle}>Đăng Ký</Link>
+        <Link to="/login" style={navLinkStyle}>Đăng Nhập</Link>
       </div>
     </nav>
   );

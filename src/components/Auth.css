@@ -1,0 +1,67 @@
+.auth-container {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 20px;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-container button:hover {
+  background-color: #3a70b2;
+}
+
+.auth-container p {
+  margin-top: 15px;
+}
+
+/* Thêm các quy tắc CSS cho phần ẩn/hiện mật khẩu */
+.password-container {
+  position: relative; /* Đảm bảo phần tử con có thể được định vị tương đối */
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* Tạo không gian cho biểu tượng mắt */
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px; /* Biểu tượng mắt nằm bên phải ô nhập */
+  cursor: pointer;
+  font-size: 18px; /* Kích thước biểu tượng mắt */
+  user-select: none; /* Ngăn chặn việc chọn văn bản */
+}
+
+.eye-icon:hover {
+  color: #4a90e2; /* Hiệu ứng hover cho biểu tượng mắt */
+}
+
+  
+  
